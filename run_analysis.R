@@ -1,3 +1,5 @@
+###############################################################################
+#
 # Load 'X' training and test datasets and apply labels from features.txt. Cull
 # this down to only columns containing mean or stdev labels and combine with 
 # subject and y datasets. Finally, combine test and train data into single 
@@ -10,8 +12,6 @@ library(tidyr)
 
 features <- read.csv('UCI_HAR_ds/features.txt', header = FALSE, 
                      sep=' ', col.names = c('num', 'desc'), check.names=FALSE)
-# Get rid of special characters that may cause parsing issues
-# features$desc <- gsub("(\\(|\\)|\\,)", "", features$desc)
 # Include only columns that are a mean or standard deviation
 wanted_feat <- features[grepl('(mean|std)', features$desc),]
 
